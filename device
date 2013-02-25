@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+/**
+ * JARVIS Device Handler
+ *
+ * Creates connections to a hardware device
+ * for use in a JARVIS system.
+ *
+ * This is something that should be able to run on a small device
+ * like a Raspberry Pi.
+ *
+ * It contains logic for multiple devices but will only control one
+ * device per process.
+ */
+
+var program = require('commander'),
+    redis = require("redis");
+
+var Device = function(device) {
+  var dev = require('./lib/' + device);
+
+  this.pubsub = redis;
+  this.lib = new dev(this.pubsub);
+};
+
+Device.prototype.listen = function() {
+  this.lib.listen();
+};
+
+program
+  .version('0.0.1')
+  .usage('[options]')
+  .option('-d, --device [value]', 'A device lib to use')
+  .parse(process.argv);
+
+if(program.device) {
+  var dev = new Device(program.device);
+  dev.lib.listen();
+}
