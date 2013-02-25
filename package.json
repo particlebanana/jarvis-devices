@@ -1,0 +1,26 @@
+{
+  "name": "jarvis-devices",
+  "description": "Device access for Jarvis",
+  "version": "0.0.1",
+  "author": "Cody Stoltman <particlebanana@gmail.com>",
+  "url": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/particlebanana/jarvis-devices"
+  },
+  "dependencies": {
+    "commander": "1.1.1",
+    "johnny-five": "0.5.14",
+    "redis": "0.8.2",
+    "hiredis": "0.1.14"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
